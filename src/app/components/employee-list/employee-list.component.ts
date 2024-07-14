@@ -19,16 +19,23 @@ export class EmployeeListComponent {
   HttpService = inject(HttpService);
   displayedColumns: string[] = ['id', 'name', 'email', 'age', 'phone', 'salary', 'action'];
   ngOnInit(): void {
+    this.getDataFromServer();
+  }
+  getDataFromServer() {
     this.HttpService.GetAllEmployee().subscribe(
       result => {
         this.employeeList = result;
-        console.log(this.employeeList);
       }
     );
   }
 
-
   edit(id: number) {
     this.router.navigateByUrl("/employee/" + id);
+  }
+
+  delete(id: number) {
+    this.HttpService.deleteEmployee(id).subscribe(() => {
+      this.employeeList = this.employeeList.filter(x => x.id != id);
+    });
   }
 }
