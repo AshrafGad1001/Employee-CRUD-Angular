@@ -1,1 +1,62 @@
-<p>employee-form works!</p>
+<div class="p-8 mt-4">
+    <div class="shadow p-6">
+        @if(isEdit){
+        <h2>Edit Employee Details</h2>
+        }@else {
+        <h2>Create Employee</h2>
+        }
+
+
+
+
+        <form [formGroup]="employeeForm" (ngSubmit)="save()">
+
+            <div class="w-full flex flex-wrap">
+                <mat-form-field class="w-full">
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput placeholder="Name...." formControlName="name">
+                </mat-form-field>
+            </div>
+
+            <div class="w-full flex flex-wrap">
+                <mat-form-field class="w-full">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput placeholder="Ex: user@example.com" formControlName="email">
+                </mat-form-field>
+            </div>
+
+            <div class="w-full flex flex-wrap">
+                <mat-form-field class="w-full">
+                    <mat-label>Mobile Number</mat-label>
+                    <input type="text" matInput placeholder="Mobile Number" formControlName="phone">
+                </mat-form-field>
+            </div>
+
+            <div class="w-full flex flex-wrap">
+                <mat-form-field class="w-full">
+                    <mat-label>Age</mat-label>
+                    <input type="number" matInput placeholder="Age" formControlName="age">
+                </mat-form-field>
+            </div>
+
+            <div class="w-full flex flex-wrap">
+                <mat-form-field class="w-full">
+                    <mat-label>salary</mat-label>
+                    <input type="number" matInput placeholder="salary" formControlName="salary">
+                </mat-form-field>
+            </div>
+
+
+
+            @if(isEdit){
+            <div class="flex justify-end">
+                <button mat-raised-button color="primary" [disabled]="!employeeForm.valid">Save Edit</button>
+            </div>
+            }@else {
+            <div class="flex justify-end">
+                <button mat-raised-button color="primary" [disabled]="!employeeForm.valid">Save Employee</button>
+            </div>
+            }
+        </form>
+    </div>
+</div>

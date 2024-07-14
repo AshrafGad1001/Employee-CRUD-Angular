@@ -15,4 +15,14 @@ export class HttpService {
   GetAllEmployee() {
     return this.http.get<IEmployee[]>(this.apiUrl + "/api/Employee");
   }
+
+  createEmployee(employee: IEmployee) {
+    return this.http.post(this.apiUrl + "/api/Employee", employee);
+  }
+  GetEmployee(empId: number) {
+    return this.http.get<IEmployee>(this.apiUrl + "/api/Employee/" + empId);
+  }
+  updateEmployee(employeeId: number, employee: IEmployee) {
+    return this.http.put<IEmployee>(this.apiUrl + "/api/Employee/" + employeeId, employee);
+  }
 }
